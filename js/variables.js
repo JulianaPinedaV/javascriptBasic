@@ -24,4 +24,5 @@ const estatura = 1.55;
 let isMarried = true;
 const esFemenino = true;
 let esSoltero = false; 
-console.log("Este es mi nombre:", nombre, "mi edad es:", edad, "mi peso es:", peso);
+let nombreHija = "Antonella";
+console.log("Mi nombre es:", nombre, " mi edad es:", edad, " mi peso es:", peso , "mi estatura es:", estatura, "estoy casada?", isMarried + " " + "Soy mujer:", esFemenino + " Soy soltera:", esSoltero, "nombre hija:", nombreHija);
