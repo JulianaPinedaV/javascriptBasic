@@ -348,10 +348,12 @@ Crea una función llamada `calcular` que reciba dos números y una operacion com
 el segundo número es 0, retornar "Error: no se puede dividir entre cero". Si la operación no existe, retornar
 "Operación no válida". */
 
+
+// solución 1
 function calcular (numero1, numero2, operacion){
     
     if (numero2 === 0 && operacion === "dividir"){
-        return "Error no se puede dividir en 0"
+        return "Error no se puede dividir entre 0"
         
     }
     if (operacion === "sumar"){
@@ -374,3 +376,22 @@ function calcular (numero1, numero2, operacion){
 }
 
 console.log(calcular(10, 2, "dividir"))
+
+// solución mejorada
+function calcular(numero1, numero2, operacion) {
+  if (operacion === "sumar") {
+    return numero1 + numero2;
+  } else if (operacion === "restar") {
+    return numero1 - numero2;
+  } else if (operacion === "multiplicar") {
+    return numero1 * numero2;
+  } else if (operacion === "dividir") {
+    if (numero2 === 0) {
+      return "Error: no se puede dividir entre cero";
+    }
+    return numero1 / numero2;
+  } else {
+    return "Operación no válida";
+  }
+}
+
