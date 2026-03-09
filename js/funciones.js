@@ -266,15 +266,19 @@ no paga impuesto. Si está entre $1000 y $3000, paga el 10%. Si es mayor a $3000
 el monto del impuesto. */
 
 function calcularImpuesto (salario){
+    const impuesto0 = 0
+    const impuesto10 = 0.10
+    const impuesto20 = 0.20
+
     if (salario < 1000){
-        return 0
+        return impuesto0
     }
     else if (salario >= 1000 && salario <= 3000){
-        return salario * 0.10;
+        return salario * impuesto10;
     }
-    return salario * 0.20;
+    return salario * impuesto20;
 }
- const impuesto = calcularImpuesto(1500);
+ const impuesto = calcularImpuesto(4000);
 console.log("El impuesto es: "+ impuesto)
 
 /* Ejercicio 17 — Ticket de compra
@@ -282,3 +286,91 @@ Crea una función llamada `generarTicket` que reciba el nombre del producto, la 
 La función debe retornar una frase con el resumen de la compra, por ejemplo: "Producto: Café | Cantidad: 3
 | Total: $9". */
 
+function generarTicket (nombreProducto, cantidad, precioUnitario){
+    const totalProducto = cantidad * precioUnitario
+    return "Producto: " + nombreProducto + " Cantidad: " + cantidad + " Total: " + totalProducto;
+}
+
+const precioFinal1 = generarTicket("azucar ", 2, 5);
+console.log(precioFinal1)
+
+/* Ejercicio 18 — Puede conducir
+Crea una función llamada `puedeConducir` que reciba edad, si tiene licencia y si ha consumido alcohol.
+Para poder conducir debe tener 18 o más años, tener licencia Y NO haber consumido alcohol. Retornar
+"Puede conducir" o el motivo por el que no puede */
+
+function puedeConducir (edad, tieneLicencia, alcohol){
+    if (edad >= 18 && tieneLicencia && !alcohol){
+        return "Puede conducir cumple con los requisitos"
+    }
+    if (edad <= 18 && tieneLicencia && !alcohol){
+        return "No puede conducir no tiene la edad"
+    }
+    if (edad >= 18 && !tieneLicencia && !alcohol){
+        return "No puede conducir no tiene licencia"
+    }
+    if (edad >= 18 && tieneLicencia && alcohol){
+        return "No puede conducir por consumo de alcohol"
+    }
+}
+
+console.log(puedeConducir(18, true, false));
+console.log(puedeConducir(17, true, false));
+console.log(puedeConducir(18, false, false));
+console.log(puedeConducir(18, true, true));
+
+/* Ejercicio 19 — Conversor de divisas
+Crea una función llamada `convertirDivisa` que reciba una cantidad en dólares y el tipo de moneda de
+destino: "EUR", "MXN" o "COP". Usar tasas aproximadas: 1 USD = 0.92 EUR, 1 USD = 17 MXN, 1 USD =
+4000 COP. Retornar el valor convertido. */
+
+function convertirDivisa (cantidadDolares, tipoMoneda){
+    if (tipoMoneda === "EUR"){
+        return (cantidadDolares * 0.92 + " EUR")
+    }
+    else if (tipoMoneda === "MXN"){
+        return (cantidadDolares * 17 + " MXN ")
+    }
+    else if (tipoMoneda === "USD"){
+        return (cantidadDolares * 4000 + " COP")
+    }
+    return "Moneda no disponible"
+}
+
+console.log(convertirDivisa(2, "EUR"));
+console.log(convertirDivisa(2, "MXN"));
+console.log(convertirDivisa(2, "USD"));
+console.log(convertirDivisa(1, "COP"));
+
+/* Ejercicio 20 — Calculadora completa
+Crea una función llamada `calcular` que reciba dos números y una operacion como texto: "sumar", "restar",
+"multiplicar" o "dividir". Retornar el resultado de la operación correspondiente. Si la operación es "dividir" y
+el segundo número es 0, retornar "Error: no se puede dividir entre cero". Si la operación no existe, retornar
+"Operación no válida". */
+
+function calcular (numero1, numero2, operacion){
+    
+    if (numero2 === 0 && operacion === "dividir"){
+        return "Error no se puede dividir en 0"
+        
+    }
+    if (operacion === "sumar"){
+        const suma = numero1 + numero2
+        return suma
+    }
+    else if (operacion === "restar"){
+        const resta = numero1 - numero2
+        return resta
+    }
+    else if (operacion === "multiplicar"){
+        const multiplicar = numero1 * numero2
+        return multiplicar
+    }
+    else if (operacion === "dividir"){
+        const dividir = numero1 / numero2
+        return dividir
+    }
+    return "operacion no existe"
+}
+
+console.log(calcular(10, 2, "dividir"))

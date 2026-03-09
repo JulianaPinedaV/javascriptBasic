@@ -117,23 +117,23 @@ Primavera (3–5), Verano (6–8), Otoño (9–11). Si el número no está entre
 válido.
  */
 
-/** const mes = 0
+const mes = 7
 
 if (mes === 12 || mes === 1 || mes === 2){
     console.log("invierno")
 }
-else if(mes === 3 || mes === 5){
+else if(mes === 3 || mes === 5 || mes === 4){
     console.log("primavera")
 }
-else if(mes === 6 || mes === 8){
+else if(mes === 6 || mes === 8 || mes === 7){
     console.log("verano")
 }
-else if (mes === 9 || mes === 11){
+else if (mes === 9 || mes === 11 || mes === 10){
     console.log("otoño")
 }
 else {
     console.log("mes no valido")
-} **/
+} 
 
 /** Ejercicio 26 — Precio de entrada al cine
 Niños menores de 12 pagan $3. Adultos mayores de 65 pagan $4. Todos los demás pagan $8. Además, si
