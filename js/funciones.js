@@ -177,3 +177,108 @@ function aplicarDescuento(precio, porcentaje){
     return precio
 }
 console.log(aplicarDescuento(100000, 5))
+
+/* Ejercicio 11 — Acceso al sistema
+Crea una función llamada `verificarAcceso` que reciba usuario y contrasena. Si el usuario es "admin" Y la
+contrasena es "1234", retornar "Acceso concedido". Si el usuario es correcto pero la contrasena no, retornar
+"Contrasena incorrecta". Si ninguno es correcto, retornar "Usuario no encontrado */
+
+function verificarAcceso (usuario, contraseña){ 
+    if (usuario === "admin" && contraseña === 1234){
+                return "Acceso concedido";
+    } 
+    if (usuario === "admin"){
+            return "Contraseña incorrecta";
+        }
+        return "Usuario no encontrado";
+    }
+
+console.log(verificarAcceso("admin", 1234))
+
+/* Ejercicio 12 — Clasificar número
+Crea una función llamada `clasificarNumero` que reciba un número y retorne: "Positivo" si es mayor a 0,
+"Negativo" si es menor a 0, o "Cero" si es exactamente 0. */
+
+function clasificarNumero (numero){
+    if (numero > 0){
+        return "Positivo";
+    }
+    else if (numero < 0){
+        return "Negativo"
+    }
+        return "Cero";
+}
+
+console.log(clasificarNumero(-6));
+
+/* Ejercicio 13 — Calcular envío
+Crea una función llamada `calcularEnvio` que reciba el total de una compra y si el cliente tiene membresía
+premium. Si el total es mayor a $50 O tiene membresía, el envío es gratis. Si no, el envío cuesta $5.
+Retornar el costo del envío. */
+
+function calcularEnvio (totalCompra, membresia){
+    if (totalCompra >50 || membresia === "premium"){
+        return ("gratis")
+    }
+    return "$5"
+} 
+
+const totalMembresia = calcularEnvio(60, "premium")
+console.log("El costo del envio es:", totalMembresia)
+
+/* Ejercicio 14 — Categoría de usuario
+Crea una función llamada `categorizarUsuario` que reciba los puntos de un usuario. Si tiene más de 1000
+puntos es "VIP", entre 500 y 1000 es "Premium", entre 100 y 499 es "Regular", menos de 100 es "Nuevo".
+Retornar la categoría. */
+
+function categorizarUsuario (puntos){
+    if (puntos > 1000){
+        return "VIP";
+    }
+    else if (puntos >= 500 && puntos <= 1000){
+        return "Premium";
+    }
+    else if (puntos >= 100 && puntos <= 499){
+        return "Regular";
+    }
+    return "Nuevo";
+}
+
+console.log(categorizarUsuario(9999));
+
+/* Ejercicio 15 — Validar contraseña
+Crea una función llamada `validarContrasena` que reciba una contrasena. Si tiene 8 o más caracteres Y NO
+es "12345678", retornar "Contrasena válida". Si no, retornar "Contrasena débil". Pista: usa
+`contrasena.length` para saber cuántos caracteres tiene. */
+
+function validarContraseña (contraseña){
+    if (contraseña.length >= 8 && contraseña !== "12345678"){
+        return "contraseña valida"
+    }
+    return "contraseña débil"
+}
+
+console.log(validarContraseña("12342210001"));
+
+/* Ejercicio 16 — Calcular impuesto
+Crea una función llamada `calcularImpuesto` que reciba un salario mensual. Si el salario es menor a $1000,
+no paga impuesto. Si está entre $1000 y $3000, paga el 10%. Si es mayor a $3000, paga el 20%. Retornar
+el monto del impuesto. */
+
+function calcularImpuesto (salario){
+    if (salario < 1000){
+        return 0
+    }
+    else if (salario >= 1000 && salario <= 3000){
+        return salario * 0.10;
+    }
+    return salario * 0.20;
+}
+ const impuesto = calcularImpuesto(1500);
+console.log("El impuesto es: "+ impuesto)
+
+/* Ejercicio 17 — Ticket de compra
+Crea una función llamada `generarTicket` que reciba el nombre del producto, la cantidad y el precio unitario.
+La función debe retornar una frase con el resumen de la compra, por ejemplo: "Producto: Café | Cantidad: 3
+| Total: $9". */
+
