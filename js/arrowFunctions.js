@@ -12,7 +12,7 @@ function verifyIsMayor(age) {
 
 // arrow function
 const verifyIsMajor = (age) => {
-    if(age >= 18){
+    if (age >= 18){
         return true;
     } else {
         return false;
