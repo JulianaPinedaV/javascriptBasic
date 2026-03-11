@@ -1,6 +1,6 @@
 console.log("Bienvenido a objetos");
 
-// es un conjunto de propiedades y metodos
+// Un OBJETO es un conjunto de propiedades y metodos
 // requiere de clave, valor
 // acceder a las propiedades de un objeto ej carro.color
 
@@ -39,7 +39,7 @@ console.log("console.log desde un objeto carro", carro);
 carro.precio = 250000;
 console.log("console.log desde un objeto carro con precio modificado", carro);
 
-// Un metodo en una función que esta dentro de un objeto
+// Un METODO en una función que esta dentro de un objeto
 const persona1 = {
     nombre: "Juliana",
     apellido: "pineda",
@@ -61,7 +61,7 @@ console.log(persona1.saludar());
 console.log("la suma de dos numeros es: ", persona1.sumar(2,3));
 console.log("la multiplicación de dos numeros es: ", persona1.multiplicar(2,3))
 
-// Creá un objeto que represente un producto con nombre y precio. Agregale un método que muestre el precio con un 21% de IVA incluido.
+// Ejercicio: Creá un objeto que represente un producto con nombre y precio. Agregale un método que muestre el precio con un 21% de IVA incluido.
  
 const producto = {
     nombre: "arroz",
@@ -75,7 +75,7 @@ const producto = {
 
 console.log(producto.precioIva())
 
-// Manipulación de string
+// MANIPULACIÓN DE STRINGS
 
 let nombre3 = "Juliana";
 let apellido3 = "Gomez";
