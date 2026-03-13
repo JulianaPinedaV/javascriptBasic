@@ -251,12 +251,12 @@ Crea una función llamada `validarContrasena` que reciba una contrasena. Si tien
 es "12345678", retornar "Contrasena válida". Si no, retornar "Contrasena débil". Pista: usa
 `contrasena.length` para saber cuántos caracteres tiene. */
 
-function validarContraseña (contraseña){
+/* function validarContraseña (contraseña){
     if (contraseña.length >= 8 && contraseña !== "12345678"){
         return "contraseña valida"
     }
     return "contraseña débil"
-}
+} */
 
 console.log(validarContraseña("12342210001"));
 

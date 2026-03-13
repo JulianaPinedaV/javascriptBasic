@@ -98,27 +98,29 @@ saldo suficiente. Todos los mensajes deben usar template literals.
 ■ Investigá: ¿Qué hace Math.abs()? Usalo para mostrar la diferencia entre el monto solicitado y el saldo
 disponible cuando no haya fondos. */
 
+// Math.abs()  sirve para obtener el valor sin signo, si es positivo se queda igual y si es negativo se convierte en positivo
+
 const cuentaBancaria = {
     titular: "Julina Pineda",
     saldo: 1000,
-    
-    depositar(monto){
+
+    depositar(monto) {
         this.saldo = this.saldo + monto;
         return `se deposito ${monto}. El nuevo saldo es ${this.saldo}`
     },
 
-    retirar(monto){
+    retirar(monto) {
         if (monto > this.saldo) {
             // Math.abs para calcular cuanto falta
             const diferencia = Math.abs(this.saldo - monto)
             return `Su saldo es ${this.saldo} y desea retirar ${monto}, no es posible realizar la transaccion. Le faltan ${diferencia} para completar el retiro`
-        
+
         }
         else {
             return `Su saldo es ${this.saldo} y desea retirar ${monto}, transaccion aprobada`
         }
     }
-}   
+}
 
 console.log(cuentaBancaria.depositar(100));
 console.log(cuentaBancaria.retirar(2000));
@@ -129,4 +131,108 @@ if/else para mostrar si el salario es alto (más de $200.000), medio (entre $100
 bajo (menos de $100.000).
 ■ Investigá: ¿Qué es el operador ||? Usalo para mostrar un puesto por defecto si la propiedad puesto está
 vacía */
+
+// operador || también se usa mucho para dar valores por defecto cuando la primer parte es vacia toma la segunda
+const empleado = {
+    nombre6: "Juliana",
+    puesto: "",
+    salario: 99000,
+
+    mostrarPuesto() {
+        const nombrePuesto = this.puesto || "developer";
+        return `su puesto es ${nombrePuesto.toUpperCase()}`;
+    },
+
+    salarioConver() {
+        if (this.salario > 200000) {
+            return `su salario es de ${this.salario} y es un salario Alto`
+        }
+        else if (this.salario >= 100000 && this.salario <= 200000) {
+            return `su salario es de ${this.salario} y es un salario Medio`
+        }
+        else {
+            return `su salario de es ${this.salario} y es un salario Bajo`
+        }
+
+    }
+};
+
+console.log(empleado.mostrarPuesto());
+console.log(empleado.salarioConver());
+
+/* 6. Creá un objeto que represente un formulario de registro con nombre de usuario y contraseña.
+Agregale un método que use .trim() y .length con if/else para validar que el nombre de usuario
+tenga entre 4 y 12 caracteres. Agregale otro que valide que la contraseña tenga al menos 8
+caracteres.
+■ Investigá: ¿Qué hace .padStart()? Usalo para mostrar el largo de la contraseña relleno con ceros a la
+izquierda, por ejemplo '08' en lugar de '8'. */
+
+// .trim() para eliminar los espacios en blanco al inicio y al final de una cadena de texto.
+// .padStart(longitudDeseada, caracterDeRelleno) sirve para rellenar una cadena de texto al inicio hasta alcanzar una longitud determinada.
+
+const formularioRegistro = {
+    nombreUsuario: "   july    ",
+    contraseña: "    july12   ",
+    
+    validarUsuario() {
+        const nombreLimpio = this.nombreUsuario.trim();
+        const longitud = nombreLimpio.length;
+
+        if (longitud >= 4 && longitud <= 12) {
+            return `El nombre de usuario ${nombreLimpio} es valido con ${longitud} caracteres`;
+        }
+        else {
+            return `El nombre de usuario ${nombreLimpio} NO es valido con ${longitud} caracteres`;
+        }
+    },
+
+    validarContraseña() {
+        const contraseñaLimpia = this.contraseña.trim();
+        const longitudContraseña = contraseñaLimpia.length;
+
+        if (longitudContraseña >= 8){
+            return `La contrasena ${contraseñaLimpia} es valida con ${longitudContraseña} caracteres`
+        }
+        else {
+            return `La contraseña ${contraseñaLimpia} No es valida con ${longitudContraseña} caracteres`
+        }
+
+    },
+
+    mostrarContraseñaFormateada() {
+        const limpia = this.contraseña.trim();
+        return limpia.padStart(10, "*");
+    }
+};
+
+console.log(formularioRegistro.validarUsuario());
+console.log(formularioRegistro.validarContraseña());
+console.log(`la contraseña formateada es, ${formularioRegistro.mostrarContraseñaFormateada()}`);
+
+/* 7. Creá un objeto que represente una canción con título, artista y duración en segundos. Agregale un
+método que use variables internas para convertir la duración a minutos y segundos y la muestre
+con template literals. Agregale otro método que use un ternario para mostrar si la canción dura más
+o menos de 3 minutos (180 segundos).
+■ Investigá: ¿Qué hace Math.floor()? Necesitás usarlo para obtener los minutos enteros al convertir
+segundos. */
+
+// Math.floor() Para obtener los minutos enteros
+
+const cancion = {
+    titulo: "destino final",
+    artista: "Yeison Jimenez",
+    duracion: 280,
+
+    convertirCancion() {
+        const minutosEnteros = Math.floor(this.duracion / 60)
+        return `La duración de la cancion es de ${minutosEnteros} en minutos y ${minutosEnteros} en segundos`
+    },
+
+    duracionCancion() {
+        return this.duracion > 180 ? "la cancion dura mas de 3 minutos" : "La cancion dura menos de 3 minutos"
+    }
+}
+
+console.log(cancion.convertirCancion());
+console.log(cancion.duracionCancion());
 
