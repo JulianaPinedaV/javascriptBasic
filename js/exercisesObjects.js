@@ -450,7 +450,6 @@ vuelven a 0. Mostrá todos los mensajes con template literals.
 sobran después de subir de nivel no se pierdan sino que queden acumulados. */
 
 
-
 /* 15. Creá un objeto que represente un restaurante con nombre, tipo de cocina y calificación del 1 al 5.
 Agregale un método que use .replace() para cambiar espacios por guiones en el nombre y pasarlo
 a minúsculas, mostrándolo como si fuera una URL. Agregale otro método con if/else para mostrar
@@ -726,3 +725,250 @@ const estudiante = {
 console.log(estudiante.carreraConver());
 console.log(estudiante.estadoAcademico());
 
+/* 23. Creá un objeto que represente un producto de e-commerce con nombre, precio y categoría.
+Agregale un método que use .includes() con un ternario para mostrar si pertenece a la sección de
+ofertas: la categoría debe contener la palabra 'oferta' para que cuente. Agregale otro método que
+muestre el nombre del producto con la primera letra en mayúscula usando .slice() y
+.toUpperCase().
+■ Investigá: ¿Qué hace .startsWith()? Usalo para verificar si la categoría empieza con la letra 'o' y compará
+ese resultado con el de .includes(). */
+
+const productoEcommerce = {
+    nombre: "camisa",
+    precio: 50000,
+    categoria: "oferta verano",
+    
+    perteneceAOfertas() {
+        return this.categoria.includes("oferta") ? "pertenece a la sección de ofertas" : "no pertenece a la sección de ofertas";
+    },
+
+    nombreConMayuscula() {
+        return this.nombre.slice(0,1).toUpperCase() + this.nombre.slice(1);
+        
+    },
+
+    comparacionCategoria() {
+        const empiezaConO = this.categoria.startsWith("o");
+        const contieneO = this.categoria.includes("o");
+        return `empieza con 'o'? ${empiezaConO} contiene 'o' ${contieneO}`;
+    }    
+}
+
+console.log(productoEcommerce.perteneceAOfertas());
+console.log(productoEcommerce.nombreConMayuscula());
+console.log(productoEcommerce.comparacionCategoria());
+
+/* 24. Creá un objeto que represente un sistema de turnos con nombre del cliente, servicio y hora. La
+hora se guarda como número (por ejemplo, 14 para las 14:00). Agregale un método que use .trim()
+para limpiar el nombre antes de guardarlo. Agregale otro método con if/else para verificar si la hora
+está dentro del horario de atención de 9 a 18: si está dentro mostrar 'Turno confirmado', si no
+mostrar 'Fuera de horario de atención'.
+■ Investigá: ¿Qué hace el operador ||? Usalo para que el método muestre 'Cliente sin nombre' si el campo
+viene vacío después del .trim(). */
+
+const sistemaTurnos = {
+    nombreCliente: "",
+    servicio: "cita odontologica",
+    hora: 8,
+
+    nombreLimpio() {
+        const nombreLimpio = this.nombreCliente.trim()
+        return nombreLimpio || "Cliente sin nombre";
+    },
+
+    horaAtencion() {
+        if (this.hora >= 9 && this.hora <= 18) {
+            return "cita confirmada"
+        }
+        else {
+            return "fuera de horario de atención"
+        }
+    },
+}
+
+console.log(sistemaTurnos.nombreLimpio());
+console.log(sistemaTurnos.horaAtencion());
+
+/* 25. Creá un objeto que represente un vehículo de delivery con patente, nombre del repartidor y
+cantidad de entregas del día. Agregale un método que use un ternario para mostrar si puede tomar
+más pedidos: el límite diario es 20 entregas. Agregale otro método que muestre la patente siempre
+en mayúsculas y sin espacios usando .toUpperCase() y .replace().
+■ Investigá: ¿Cuál es la diferencia entre .replace() y .replaceAll()? Probá qué pasa si la patente tiene más
+de un espacio y usá el que corresponda. */
+
+const vehiculoDelivery = {
+    patente: "abc  123  abc ",
+    nombreRepartidor: "juan",
+    cantidadEntregas: 21,
+
+    pedidosAdicionales() {
+        return this.cantidadEntregas <= 20 ? "puede tomar mas pedidos" : "no puede tomar mas pedidos"
+    },
+
+    patenteConver() {
+        return this.patente.toUpperCase().replaceAll(" ", "")
+    }
+}
+
+console.log(vehiculoDelivery.pedidosAdicionales());
+console.log(vehiculoDelivery.patenteConver());
+
+/* 26. Creá un objeto que represente un examen con materia, alumno, respuesta correcta y respuesta del
+alumno. Agregale un método que use .trim() y .toLowerCase() para normalizar ambas respuestas
+antes de compararlas. Usá if/else para mostrar 'Correcto' o 'Incorrecto' con el nombre del alumno y
+la materia usando template literals.
+■ Investigá: ¿Cuál es la diferencia entre == y ===? Explicá cuál usarías para comparar las respuestas y por
+qué. */
+
+const examen = {
+    materia: "matematicas",
+    alumno: "juliana",
+    respuestaCorrecta: "FALSE",
+    respuestaAlumno: "false",
+
+    respuestas(){
+        const respuestaCorrectaConvertida = this.respuestaCorrecta.trim().toLowerCase();
+        const respuestaAlumnoConvertida = this.respuestaAlumno.trim().toLowerCase();
+
+        if (respuestaCorrectaConvertida === respuestaAlumnoConvertida ){
+            return (`${this.alumno}, ${this.materia} respuesta correcta`)
+        }
+        else {
+            return (`${this.alumno}, ${this.materia} respuesta incorrecta`)
+        }
+
+    }
+}
+
+console.log(examen.respuestas())
+
+/* 27. Creá un objeto que represente una notificación con título, mensaje y prioridad ('alta', 'media' o
+'baja'). Agregale un método que use if/else para mostrar el título en mayúsculas si la prioridad es
+alta, en formato normal si es media, y en minúsculas si es baja. Agregale otro método que use
+.length con un ternario para recortar el mensaje si supera los 50 caracteres, mostrando solo los
+primeros 50 seguidos de '...'.
+■ Investigá: ¿Qué hace .substring()? Compará cómo funciona con .slice() para recortar el mensaje y usá el
+que te parezca más claro. */
+
+const notificacion = {
+    titulo: "Cuenta de cobro",
+    mensaje: "le informamos que en este momento tiene un saldo pendiente de pago de 200.000. POr favor porngase al día en los pagos",
+    prioridad: "baja",
+
+    tituloPrioridad() {
+        if (this.prioridad === "alta"){
+            return this.titulo.toUpperCase()
+        }
+        else if (this.prioridad === "media"){
+            return this.titulo
+        }
+        else if (this.prioridad === "baja"){
+            return this.titulo.toLowerCase()
+        }
+        else {
+            return "La prioridad no existe"
+        }
+    },
+ 
+    mensajeRecortado() {
+        const longitudMensaje = this.mensaje.length
+        return longitudMensaje >50 ? `${this.mensaje.substring(0, 50)}...` : `${this.mensaje}`
+    }
+}
+
+console.log(notificacion.tituloPrioridad());
+console.log(notificacion.mensajeRecortado());
+
+/* 28. Creá un objeto que represente una farmacia con nombre, dirección y turno (booleano que indica si
+está de turno esa noche). Agregale un método con un ternario para mostrar si está de turno.
+Agregale otro método que use .replace() para formatear la dirección reemplazando la abreviatura
+'Av.' por 'Avenida'.
+■ Investigá: ¿Qué hace .endsWith()? Usalo para verificar si la dirección termina con un número y mostrar un
+mensaje distinto si no tiene numeración */
+
+const farmacia = {
+    nombre: "la rebaja",
+    direccion: "av 37 # 50 20",
+    turno: false,
+
+    estaDeTurno() {
+        return this.turno ? "esta de turno" : "no esta de turno"
+    },
+
+    direccionFormateada() {
+        return this.direccion.replace("av", "avenida");
+    },
+
+    verificarDireccion() {
+        if (this.direccion.endsWith("0") || this.direccion.endsWith("1") || this.direccion.endsWith("2") || this.direccion.endsWith("3") || this.direccion.endsWith("4") || this.direccion.endsWith("5") || this.direccion.endsWith("6") || this.direccion.endsWith("7") || this.direccion.endsWith("8") || this.direccion.endsWith("9")){
+            return "la direccion termina en un numero"
+        }
+        else {
+            return "la direccion no tiene numeracion"
+        }
+    }
+}
+
+console.log(farmacia.estaDeTurno());
+console.log(farmacia.direccionFormateada());
+console.log(farmacia.verificarDireccion());
+
+/* 29. Creá un objeto que represente una cancha de fútbol con nombre, superficie y precio por hora.
+Agregale un método que reciba la cantidad de horas y use if/else para calcular el precio: si se
+reservan más de 3 horas se aplica un 20% de descuento, si no se cobra el precio normal. Mostrá el
+nombre de la cancha con .toUpperCase() en todos los mensajes.
+■ Investigá: ¿Qué hace Math.round()? Usalo para redondear el precio final al número entero más cercano y
+evitar decimales extraños. */
+
+const canchaFutbol = {
+    nombre: "uribe",
+    superficie: "4000 m2",
+    precioHora: 3.2,
+
+    valorTotal(cantidadHoras) {
+        const valorTotal = cantidadHoras * this.precioHora;
+
+        if (cantidadHoras > 3){
+            const descuento = valorTotal * 0.20;
+            const valorFinal = valorTotal - descuento;
+            return `cancha ${this.nombre.toUpperCase()} valor reserva ${Math.round(valorFinal)}`
+     }
+     else {
+        return `${this.nombre.toUpperCase()} valor reserva ${Math.round(valorTotal)}`
+     }
+}
+}
+
+console.log(canchaFutbol.valorTotal(3));
+
+/* 30. Creá un objeto que represente un certificado con nombre del participante, curso y fecha. Agregale
+un método que use .toUpperCase() en el nombre y template literals para generar el texto oficial del
+certificado. Agregale otro método que use .length con if/else para verificar que el nombre no supere
+los 40 caracteres: si los supera mostrar 'Nombre demasiado largo para el certificado'.
+■ Investigá: ¿Qué hace .padEnd()? Usalo para rellenar el nombre con puntos hasta llegar exactamente a 40
+caracteres si es más corto, como se hace en los diplomas. */
+
+const certificado = {
+    nombreParticipante: "antonella marin",
+    curso: "programacion",
+    fecha: "2026-02-20",
+
+    certificadoOficial(){
+        return `El participante ${this.nombreParticipante.toUpperCase()} obtuvo el certificado al curso de ${this.curso} el dia ${this.fecha}`;    
+    },
+
+    longitudCertificado() {
+        const longitud = this.nombreParticipante.length
+        console.log(longitud);
+
+        if (longitud > 40) {
+            return "Nombre demasiado largo para el certificado"
+        }
+        else {
+            return this.nombreParticipante.padEnd(40, ".");
+        }
+    }
+}
+
+console.log(certificado.certificadoOficial());
+console.log(certificado.longitudCertificado());
