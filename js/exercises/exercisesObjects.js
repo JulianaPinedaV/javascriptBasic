@@ -396,12 +396,12 @@ const pasajero = {
 
     exceso() {
         return Math.max(0, this.pesoEquipaje - this.pesoPermitido)
-    } 
+    }
 }
 
 console.log(pasajero.datosPasajero());
 console.log(pasajero.cargoExtra());
-console.log("kilos de mas", pasajero.exceso()); 
+console.log("kilos de mas", pasajero.exceso());
 
 /* 13. Creá un objeto que represente un libro con título, autor y cantidad de páginas. Agregale un método
 que use .slice() para mostrar solo los primeros 10 caracteres del título seguidos de '...' si el título es
@@ -423,20 +423,20 @@ const libro = {
         if (this.cantidadPaginas < 150) {
             return "lectura corta"
         }
-        else if (this.cantidadPaginas >= 150 && this.cantidadPaginas < 400){
+        else if (this.cantidadPaginas >= 150 && this.cantidadPaginas < 400) {
             return "lectura media"
         }
         else {
             return "lectura larga"
         }
-    }, 
-    
+    },
+
     inicial() {
         const inicialAutor = this.autor.charAt(0).toUpperCase();
         const apellidoAutor = this.autor.split(" ")[1];
         return `${inicialAutor}. ${apellidoAutor}`;
     }
-    }
+}
 
 console.log(libro.caracteresTitulo());
 console.log(libro.clasificacion());
@@ -467,26 +467,26 @@ const restaurante = {
     },
 
     calificacionTexto() {
-        if (this.calificacion === 1){
+        if (this.calificacion === 1) {
             return "muy malo"
         }
-        else if (this.calificacion === 2){
+        else if (this.calificacion === 2) {
             return "malo"
         }
-        else if (this,this.calificacion === 3){
+        else if (this.calificacion === 3) {
             return "regular"
         }
-        else if (this.calificacion === 4){
+        else if (this.calificacion === 4) {
             return "bueno"
         }
-        else if (this.calificacion === 5){
+        else if (this.calificacion === 5) {
             return "excelente"
         }
         else {
             return "la calificacion no es valida"
         }
     },
-    
+
 }
 
 console.log(restaurante.nombreReplace());
@@ -504,22 +504,22 @@ const paciente = {
     temperatura: 37,
     presionArterial: 120,
 
-    diagnostico(){
+    diagnostico() {
         const tempNormal = this.temperatura >= 36 && this.temperatura <= 37.5;
-        const presionNormal = this.presionArterial >= 60 && this.presionArterial <= 120;        
-        if (tempNormal && presionNormal){
+        const presionNormal = this.presionArterial >= 60 && this.presionArterial <= 120;
+        if (tempNormal && presionNormal) {
             return `El paciente ${this.nombrePaciente} tiene temperatura y presión arterial normales`
-        }       
-        else if (!tempNormal && presionNormal){
+        }
+        else if (!tempNormal && presionNormal) {
             return `El paciente ${this.nombrePaciente} tiene temperatura anormal y presión arterial normal`
         }
-        else if (tempNormal && !presionNormal){
+        else if (tempNormal && !presionNormal) {
             return `El paciente ${this.nombrePaciente} tiene temperatura normal y presión arterial anormal`
         }
         else {
             return `El paciente ${this.nombrePaciente} tiene temperatura y presión arterial anormales`
         }
-        
+
     }
 }
 
@@ -535,8 +535,8 @@ const cuponDescuento = {
     porcentaje: 10,
     estado: "Activo",
 
-    precioTotal(precio){
-        if (this.estado === "Activo"){
+    precioTotal(precio) {
+        if (this.estado === "Activo") {
             const descuento = (precio * this.porcentaje) / 100;
             const precioFinal = precio - descuento;
             return precioFinal.toFixed(2);
@@ -546,7 +546,7 @@ const cuponDescuento = {
         }
     },
 
-    codigoConvertido(){
+    codigoConvertido() {
         return this.codigo.toUpperCase();
     }
 }
@@ -572,13 +572,13 @@ const perfil = {
     },
 
     clasificacionCuenta() {
-        if (this.cantidadSeguidores < 1000){
+        if (this.cantidadSeguidores < 1000) {
             return "cuenta nueva"
         }
-        else if (this.cantidadSeguidores >= 1000 && this.cantidadSeguidores < 10000){
+        else if (this.cantidadSeguidores >= 1000 && this.cantidadSeguidores < 10000) {
             return "cuenta en crecimiento"
         }
-        else if (this.cantidadSeguidores >= 10000 && this.cantidadSeguidores < 100000){
+        else if (this.cantidadSeguidores >= 10000 && this.cantidadSeguidores < 100000) {
             return "influencer"
         }
         else {
@@ -610,7 +610,7 @@ const vuelo = {
     },
 
     estadoVuelo() {
-        return !this.retrasado ? "a tiempo" : "retrasado" 
+        return !this.retrasado ? "a tiempo" : "retrasado"
     },
 
     zonaHoraria() {
@@ -623,7 +623,7 @@ const vuelo = {
         else if (this.origen === "Nueva York") {
             return 'GMT-5'
         }
-        else { 
+        else {
             return "zona horaria desconocida"
         }
     }
@@ -645,16 +645,16 @@ const receta = {
     ingredientes: "  arroz, pollo, pimenton, zanahoria, arveja, salchichas, salsa de tomate    ",
     preparacion: 120,
 
-    ingredientesLista(){
+    ingredientesLista() {
         const ingredientesLimpios = this.ingredientes.trim();
         return ingredientesLimpios.split(",");
     },
 
-    tiempoReceta(){
-        if (this.preparacion < 15){
+    tiempoReceta() {
+        if (this.preparacion < 15) {
             return "rapida"
         }
-        else if (this.preparacion >= 15 && this.preparacion < 45){
+        else if (this.preparacion >= 15 && this.preparacion < 45) {
             return "normal"
         }
         else {
@@ -696,11 +696,11 @@ que use .toLowerCase() para normalizar el nombre de la carrera antes de mostrarl
 método con if/else para mostrar el estado académico: promedio menor a 4 es 'en riesgo
 académico', entre 4 y 5.9 es 'puede rendir con previa', y 6 o más es 'habilitado para rendir el final'.
 ■ Investigá: ¿Qué hace Math.round()? Usalo para redondear el promedio antes de mostrarlo. */
-
+console.log("---- ejercicio 22 ----------- ");
 const estudiante = {
     nombre7: "juliana",
     carrera: "Administracion de EMPRESAS",
-    promedio: 4.2,
+    promedio: 3.6,
 
     carreraConver() {
         const carreraConver = this.carrera.toLowerCase();
@@ -712,7 +712,7 @@ const estudiante = {
 
         if (promedioRedondeado < 4) {
             return "en riesgo academico"
-        } 
+        }
         else if (promedioRedondeado >= 4 && this.promedio < 5.9) {
             return "puede rendir con previa"
         }
@@ -737,21 +737,21 @@ const productoEcommerce = {
     nombre: "camisa",
     precio: 50000,
     categoria: "oferta verano",
-    
+
     perteneceAOfertas() {
         return this.categoria.includes("oferta") ? "pertenece a la sección de ofertas" : "no pertenece a la sección de ofertas";
     },
 
     nombreConMayuscula() {
-        return this.nombre.slice(0,1).toUpperCase() + this.nombre.slice(1);
-        
+        return this.nombre.slice(0, 1).toUpperCase() + this.nombre.slice(1);
+
     },
 
     comparacionCategoria() {
         const empiezaConO = this.categoria.startsWith("o");
         const contieneO = this.categoria.includes("o");
         return `empieza con 'o'? ${empiezaConO} contiene 'o' ${contieneO}`;
-    }    
+    }
 }
 
 console.log(productoEcommerce.perteneceAOfertas());
@@ -826,11 +826,11 @@ const examen = {
     respuestaCorrecta: "FALSE",
     respuestaAlumno: "false",
 
-    respuestas(){
+    respuestas() {
         const respuestaCorrectaConvertida = this.respuestaCorrecta.trim().toLowerCase();
         const respuestaAlumnoConvertida = this.respuestaAlumno.trim().toLowerCase();
 
-        if (respuestaCorrectaConvertida === respuestaAlumnoConvertida ){
+        if (respuestaCorrectaConvertida === respuestaAlumnoConvertida) {
             return (`${this.alumno}, ${this.materia} respuesta correcta`)
         }
         else {
@@ -856,23 +856,23 @@ const notificacion = {
     prioridad: "baja",
 
     tituloPrioridad() {
-        if (this.prioridad === "alta"){
+        if (this.prioridad === "alta") {
             return this.titulo.toUpperCase()
         }
-        else if (this.prioridad === "media"){
+        else if (this.prioridad === "media") {
             return this.titulo
         }
-        else if (this.prioridad === "baja"){
+        else if (this.prioridad === "baja") {
             return this.titulo.toLowerCase()
         }
         else {
             return "La prioridad no existe"
         }
     },
- 
+
     mensajeRecortado() {
         const longitudMensaje = this.mensaje.length
-        return longitudMensaje >50 ? `${this.mensaje.substring(0, 50)}...` : `${this.mensaje}`
+        return longitudMensaje > 50 ? `${this.mensaje.substring(0, 50)}...` : `${this.mensaje}`
     }
 }
 
@@ -900,7 +900,7 @@ const farmacia = {
     },
 
     verificarDireccion() {
-        if (this.direccion.endsWith("0") || this.direccion.endsWith("1") || this.direccion.endsWith("2") || this.direccion.endsWith("3") || this.direccion.endsWith("4") || this.direccion.endsWith("5") || this.direccion.endsWith("6") || this.direccion.endsWith("7") || this.direccion.endsWith("8") || this.direccion.endsWith("9")){
+        if (this.direccion.endsWith("0") || this.direccion.endsWith("1") || this.direccion.endsWith("2") || this.direccion.endsWith("3") || this.direccion.endsWith("4") || this.direccion.endsWith("5") || this.direccion.endsWith("6") || this.direccion.endsWith("7") || this.direccion.endsWith("8") || this.direccion.endsWith("9")) {
             return "la direccion termina en un numero"
         }
         else {
@@ -928,15 +928,15 @@ const canchaFutbol = {
     valorTotal(cantidadHoras) {
         const valorTotal = cantidadHoras * this.precioHora;
 
-        if (cantidadHoras > 3){
+        if (cantidadHoras > 3) {
             const descuento = valorTotal * 0.20;
             const valorFinal = valorTotal - descuento;
             return `cancha ${this.nombre.toUpperCase()} valor reserva ${Math.round(valorFinal)}`
-     }
-     else {
-        return `${this.nombre.toUpperCase()} valor reserva ${Math.round(valorTotal)}`
-     }
-}
+        }
+        else {
+            return `${this.nombre.toUpperCase()} valor reserva ${Math.round(valorTotal)}`
+        }
+    }
 }
 
 console.log(canchaFutbol.valorTotal(3));
@@ -953,8 +953,8 @@ const certificado = {
     curso: "programacion",
     fecha: "2026-02-20",
 
-    certificadoOficial(){
-        return `El participante ${this.nombreParticipante.toUpperCase()} obtuvo el certificado al curso de ${this.curso} el dia ${this.fecha}`;    
+    certificadoOficial() {
+        return `El participante ${this.nombreParticipante.toUpperCase()} obtuvo el certificado al curso de ${this.curso} el dia ${this.fecha}`;
     },
 
     longitudCertificado() {
@@ -972,3 +972,347 @@ const certificado = {
 
 console.log(certificado.certificadoOficial());
 console.log(certificado.longitudCertificado());
+
+/* 31. Creá un objeto que represente una aplicación de delivery con nombre del local, categoría y tiempo
+estimado de entrega en minutos. Agregale un método que use un ternario para mostrar si la
+entrega es express (menos de 30 minutos) o normal. Agregale otro método con if/else para calcular
+el costo de envío según la distancia que recibe como parámetro: hasta 3 km cuesta $500, entre 3 y
+7 km cuesta $900, y más de 7 km cuesta $1.500.
+■ Investigá: ¿Qué son los if/else anidados? Usá ese concepto para agregar un caso especial: si la distancia
+supera los 15 km mostrar 'Zona sin cobertura' antes de calcular el costo. */
+
+const delivery = {
+    nombreLocal: "la estrella",
+    categoria: "articulos para el hogar",
+    tiempoEstimadoEntrega: 29,
+
+    tipoDeEntrega() {
+        return this.tiempoEstimadoEntrega < 30 ? "Entrega express" : "Entrega normal"
+    },
+
+    costoEnvio(distancia) {
+        if (distancia <= 3) {
+            return "El costo del envio es de $500"
+        }
+        else if (distancia > 3 && distancia <= 7) {
+            return "El costo del envio es de $900"
+        }
+        else if (distancia > 7) {
+            if (distancia > 15) {
+                return "Zona sin cobertura"
+            }
+            return "El costo del envio es de $1500"
+        }
+    }
+
+}
+
+console.log(delivery.tipoDeEntrega());
+console.log(delivery.costoEnvio(15));
+
+/* 32. Creá un objeto que represente un ticket de soporte con número, descripción del problema y estado
+('abierto', 'en progreso' o 'cerrado'). Agregale un método con if/else para cambiar el estado al
+siguiente en la secuencia: 'abierto' pasa a 'en progreso', 'en progreso' pasa a 'cerrado', y si ya está
+'cerrado' mostrar 'El ticket ya está cerrado'. Agregale otro método que use .slice() para mostrar solo
+los primeros 30 caracteres de la descripción como resumen.
+■ Investigá: ¿Qué pasa cuando reasignás una propiedad de un objeto con =? Verificá que el estado del
+objeto cambia de verdad llamando al método dos veces seguidas. */
+
+console.log("-----Ejercicio 32------")
+const ticketSoporte = {
+    numero: 930930,
+    descripcion: "pc no enciende, la pantalla se queda negra ",
+    estado: "abierto",
+
+    cambiarEstado() {
+        if (this.estado === "abierto") {
+            return `El estado del ticket ahora es ${this.estado = "en progreso"}`
+        }
+        else if (this.estado === "en progreso") {
+            return `El estado del ticket ahora es ${this.estado = "cerrado"}`
+        }
+        else if (this.estado === "cerrado") {
+            return "El ticket ya esta cerrado"
+        }
+    },
+
+    resumenDescripcion() {
+        console.log(this.descripcion.length)
+        return this.descripcion.slice(0, 30)
+
+    }
+}
+
+console.log(ticketSoporte.cambiarEstado());
+console.log(ticketSoporte.cambiarEstado());
+console.log(ticketSoporte.resumenDescripcion());
+
+/* 33. Creá un objeto que represente una playlist con nombre, género y canciones guardadas como string
+separado por |. Agregale un método que use .split() para mostrar cuántas canciones tiene.
+Agregale otro método con if/else para mostrar la recomendación de volumen según el género:
+'rock' → 'Volumen alto, 80%', 'jazz' → 'Volumen medio, 50%', 'clasica' → 'Volumen bajo, 30%',
+cualquier otro género → 'Volumen a gusto'.
+■ Investigá: ¿Qué pasa si aplicás .trim() al string completo de canciones antes del .split()? Probá qué ocurre
+si algún nombre de canción tiene un espacio antes o después del separador |. */
+
+// Al aplica el .trim() y luego el .split() se borran los espacios del inicio y del final pero no los que estan en los separadores
+
+const playlist = {
+    nombre: "aventurero",
+    genero: "rock",
+    canciones: "   bendecida     |   vete | aventurero | hasta la madre | ni tengo ni necesito | tengo ganas | por que la envidia | ya no mi amor      ",
+
+    totalCanciones() {
+        return this.canciones.trim().split("|")
+    },
+
+    volumen() {
+        if (this.genero === "rock") {
+            return "Volumen alto, 80%"
+        }
+        else if (this.genero === "jazz") {
+            return "Volumen medio, 50%"
+        }
+        else if (this.genero === "clasica") {
+            return "Volumen bajo, 30%"
+        }
+        else {
+            return "Volumen a gusto"
+        }
+
+    }
+}
+
+
+console.log(playlist.totalCanciones())
+console.log(playlist.volumen())
+
+/* 34. Creá un objeto que represente un hotel con nombre, categoría en estrellas y precio por noche.
+Agregale un método que reciba la cantidad de noches y use if/else para aplicar descuento: menos
+de 3 noches sin descuento, entre 3 y 6 noches 10% de descuento, 7 o más noches 20% de
+descuento. Agregale otro método que use template literals y .repeat() para mostrar las estrellas del
+hotel visualmente con el símbolo de estrella.
+■ Investigá: ¿Qué hace .repeat()? Ya lo usás para las estrellas. Ahora investigá si podés usarlo para
+generar una barra visual con el carácter # según el porcentaje de descuento. */
+
+const hotel = {
+    nombre: "la estrella",
+    categoria: "4",
+    precioNoche: 100000,
+
+    descuento(cantidadNoches) {
+        if (cantidadNoches < 3) {
+            return "sin descuento"
+        }
+        else if (cantidadNoches >= 3 && cantidadNoches <= 6) {
+            const barra = "#".repeat(5)
+            return (`Obtuvo un descuento del 10 %: ${barra} ${this.precioNoche * cantidadNoches * 0.10}`)
+        }
+        else
+            return (`Obtuvo un descuento del 20 %: ${"#".repeat(10)} ${this.precioNoche * cantidadNoches * 0.20}`)
+    },
+
+    estrellasHotel() {
+        return `El hotel ${this.nombre} tiene ${this.categoria} estrellas ${"⭐".repeat(this.categoria)} `
+    }
+
+}
+
+console.log(hotel.descuento(2));
+console.log(hotel.descuento(3));
+console.log(hotel.descuento(7));
+console.log(hotel.estrellasHotel());
+
+/*35. Creá un objeto que represente un contrato con cliente, servicio y duración en meses. Agregale un
+método que reciba los meses restantes como parámetro y use if/else para mostrar si el contrato
+está vigente (más de 2 meses restantes), por vencer (1 o 2 meses restantes) o vencido (0 meses o
+menos). Mostrá todos los datos con template literals y el nombre del cliente siempre en
+mayúsculas.
+■ Investigá: ¿Qué hace el operador <=? Usalo en tus condiciones y explicá la diferencia con <. */
+
+const contrato = {
+    cliente: "Luis Arias",
+    servicio: "arreglo fachada",
+    duracion: 5,
+
+    vigenciaContrato(mesesRestantes) {
+        if (mesesRestantes > 2) {
+            return `El contrato del señor ${this.cliente.toUpperCase()} para el servicio de ${this.servicio} con una duracion de ${this.duracion} meses, se encuentra en estado VIGENTE con ${mesesRestantes} meses faltantes`
+        }
+        else if (mesesRestantes >= 1 && mesesRestantes <= 2) {
+            return `El contrato del señor ${this.cliente.toUpperCase()} para el servicio de ${this.servicio} con una duracion de ${this.duracion} meses, se encuentra en estado POR VENCER con ${mesesRestantes} meses faltantes`
+        }
+        else {
+            return `El contrato del señor ${this.cliente.toUpperCase()} para el servicio de ${this.servicio} con una duracion de ${this.duracion} meses, se encuentra en estado VENCIDO con ${mesesRestantes} meses faltantes`
+        }
+    }
+
+}
+
+console.log(contrato.vigenciaContrato(3))
+
+/* 36. Creá un objeto que represente un chatbot con nombre y cuatro respuestas guardadas como un
+string separado por |. Agregale un método que use .split() e if/else para seleccionar una respuesta
+según el número que recibe como parámetro (1, 2, 3 o 4). Si el número está fuera de ese rango,
+mostrar 'Opción inválida'. Agregale otro método que muestre el nombre del bot con .toUpperCase()
+y la cantidad de respuestas disponibles.
+■ Investigá: ¿Qué hace el operador && dentro de un if? Usalo para validar dos condiciones a la vez: que el
+número recibido sea mayor a 0 Y menor o igual a 4 */
+console.log("---- ejercicio 36 ----------- ");
+const chatbot = {
+    nombre: "ana",
+    respuestas: "Si | Claro | Fue un placer | Con gusto",
+    arrayRespuestas: [],
+
+    inicializador() {
+        this.arrayRespuestas = this.respuestas.split("|");
+    },
+
+    seleccionarRespuesta(numeroRespuesta) {
+        if (numeroRespuesta > 0 && numeroRespuesta <= 4) {
+            return `Tu respuesta es: ${this.arrayRespuestas[numeroRespuesta - 1]}`
+        }
+        else {
+            return "Opcion invalida"
+        }
+    },
+
+    nombreBot() {
+        return `${this.nombre.toUpperCase()} tiene ${this.arrayRespuestas.length} respuestas disponibles`
+    }
+}
+
+chatbot.inicializador();
+console.log(chatbot.seleccionarRespuesta(4));
+console.log(chatbot.nombreBot());
+
+/* 37. Creá un objeto que represente un equipo de desarrollo con nombre, tecnología principal y cantidad
+de integrantes. Agregale un método que use .includes() con un ternario para mostrar si el equipo
+trabaja con JavaScript. Agregale otro método que use if/else para mostrar si el equipo es pequeño
+(menos de 4 integrantes), mediano (entre 4 y 8 integrantes) o grande (más de 8 integrantes).
+■ Investigá: ¿Por qué es importante usar .toLowerCase() antes de .includes()? Probá qué pasa si la
+tecnología está guardada como 'javascript', 'JavaScript' o 'JAVASCRIPT'. */
+
+const equipoDesarrollo = {
+    nombre: "lannister",
+    tecnologia: "JavaScript",
+    cantidadIntegrantes: 9,
+
+    tecnologiaEquipo() {
+        return this.tecnologia.toLowerCase().includes("javascript") ? "El equipo trabaja con JavaScript" : "el equipo no trabaja con JavaScript"
+    },
+
+    tamanoEquipo() {
+        if (this.cantidadIntegrantes < 4){
+            return `El equipo ${this.nombre} es pequeño`;
+        }
+        else if (this.cantidadIntegrantes >= 4 && this.cantidadIntegrantes <= 8){
+            return `El equipo ${this.nombre} es mediano`
+        }
+        else {
+            return `El equipo ${this.nombre} es grande`
+        }
+    }
+}
+
+console.log(equipoDesarrollo.tecnologiaEquipo());
+console.log(equipoDesarrollo.tamanoEquipo());
+
+/* 38. Creá un objeto que represente un evento con nombre, fecha, lugar y si tiene cupos disponibles.
+Agregale un método que use .replace() y .toLowerCase() para generar un slug del nombre del
+evento reemplazando espacios por -. Agregale otro método con un ternario para mostrar si se
+puede inscribir al evento o si está agotado.
+■ Investigá: ¿Cuál es la diferencia entre .replace() y .replaceAll()? Probá con un nombre de evento que
+tenga más de un espacio y usá el método correcto. */
+
+const evento = {
+    nombre: "Fiesta Fin de año",
+    fecha: "2026-12-10",
+    lugar: "hotel carretero",
+    tieneCuposDisponibles: false,
+
+    nombreEvento() {
+        return `Nombre del evento ${this.nombre.replaceAll(" ","-").toLowerCase()}`
+    },
+ 
+    incripcion() {
+        return this.tieneCuposDisponibles ? "Se puede inscribir al evento" : "El evento esta agotado";
+    }
+
+}
+
+console.log(evento.nombreEvento());
+console.log(evento.incripcion());
+
+/* 39. Creá un objeto que represente un perfil de CV con nombre, profesión y habilidades en un string
+separado por comas. Agregale un método que use .split() y .length para mostrar cuántas
+habilidades tiene listadas. Agregale otro método que use .includes() con if/else para mostrar 'Perfil
+compatible con la búsqueda' o 'Perfil no compatible' según si tiene o no la habilidad que recibe
+como parámetro. Todos los mensajes deben usar template literals.
+■ Investigá: ¿Qué hace .includes() cuando el string buscado tiene espacios? Probá buscar ' JavaScript' con
+espacio al principio y usá .trim() para evitar ese problema. */
+
+const perfilCv = {
+    nombre: "ana castro",
+    profesion: "contadora",
+    habilidades: "  responsable, puntual, organizada, trabaja en equipo",
+
+    cantidadHabilidades() {        
+        const habilidadesLimpias = this.habilidades.trim();
+        console.log("habilidades limpias:",habilidadesLimpias);
+        return `Cantidad de habilidades: ${habilidadesLimpias.split(",").length}`
+    },
+
+    perfilCompatible(habilidad) {
+        const habilidadBuscada = habilidad.trim(); 
+        if (this.habilidades.includes(habilidadBuscada)){
+            return `La habilidad ${habilidadBuscada} es compatible con la busqueda`
+        }
+        else {
+            return `La habilidad ${habilidadBuscada} no es compatible`
+        }
+
+    }
+
+}
+
+console.log(perfilCv.cantidadHabilidades())
+console.log(perfilCv.perfilCompatible("    responsable"))
+
+/* Creá un objeto que represente un sistema de facturación con nombre del cliente, lista de items
+como string separado por ; y descuento en porcentaje. Cada item tiene el formato 'nombre:precio'.
+Agregale un método que use .split() para separar los items, variables internas para sumar los
+precios y calcular el subtotal, y if/else para aplicar el descuento solo si el subtotal supera $5.000.
+Mostrá la factura completa con template literals incluyendo subtotal, descuento aplicado y total
+final.
+■ Investigá: ¿Qué hace Number()? Lo vas a necesitar porque después del .split() los precios van a ser
+strings y no vas a poder sumarlos directamente. */
+
+const facturacion = {
+    nombreCliente: "Juliana Pineda",
+    listaItems: "panela:3000; arroz:4000; aceite:10000; azucar:2000; leche:4000; chocolate:9000; carne:40000; pollo:30000; verduras:15000",
+    descuento: 10,
+
+    itemsSeparados() {
+        const listaDeProductos = this.listaItems.split(";");
+        let subtotal = 0;
+        for (const producto of listaDeProductos) {
+            let p = producto.split(":");
+            subtotal += Number(p[1])
+    }
+
+    let descuentoAplicado = 0;
+    if (subtotal > 5000){
+        descuentoAplicado = (subtotal * this.descuento) / 100;
+    }
+
+    const totalAPagar = subtotal - descuentoAplicado;
+
+    console.log(`sub total= ${subtotal}`);
+    console.log(`descuento aplicado = ${descuentoAplicado}`);
+    console.log(`Total a pagar: ${totalAPagar}`);
+
+}
+}
+
+facturacion.itemsSeparados();
