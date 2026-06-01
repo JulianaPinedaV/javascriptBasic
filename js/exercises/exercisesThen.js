@@ -74,7 +74,12 @@ verificarStock(0)
     })
     .finally(() => {
         console.log("Consulta de stock finalizada")
-    }); */
+    });
+
+    async function verificarStockAsyns() {
+        const result = await verificarStockAsyns();
+        console.log(result)
+    } */
 
 /* Ejercicio 5:
 Crea una funcion llamada `calcularDescuento` que reciba un precio y un
@@ -82,14 +87,14 @@ porcentaje. Si el porcentaje es mayor a 100 o menor a 0, la promesa
 debe rechazarse con `"Porcentaje invalido"`. Si no, debe resolver con
 el precio final despues del descuento. Prueba con (200, 15) y con (200, 110). */
 
-/* function calcularDescuento(precio, porcentaje) {
+function calcularDescuento(precio, porcentaje) {
     return new Promise((resolve, reject) => {
         if (porcentaje > 100 || porcentaje < 0) {
             reject("Porcentaje invalido")
         }
         else {
             const precioFinal = precio - (precio * porcentaje / 100)
-            resolve(precioFinal) 
+            resolve(precioFinal)
         }
     });
 }
@@ -99,8 +104,19 @@ calcularDescuento(200, 110)
         console.log("El precio final es", resultado)
     })
     .catch((error) => {
-        console.log("Error:", error)
-    }); */
+        console.log("Error", error)
+    });  
+
+async function calcularDescuentoAsync(precio, porcentaje) {
+    try {
+        const resultado = await calcularDescuento(precio, porcentaje);
+        console.log(resultado)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+calcularDescuentoAsync(200, 110)
 
 /* Ejercicio 6:
 Crea una funcion llamada `procesarNumero` que retorne una promesa que
@@ -118,7 +134,7 @@ Imprime el resultado final. */
 
 procesarNumero()
     .then((resultado) => {
-        return resultado * 3;        
+        return resultado * 3;
     })
     .then((resultado) => {
         return resultado + 5;
@@ -178,7 +194,7 @@ Cada paso debe esperar 800ms. Imprime cada estado cuando llegue. */
     return new Promise ((resolve) => {
         setTimeout(() => {
             resolve(mensaje)
-        }, tiempo) 
+        }, tiempo)
     })
 }
 
@@ -199,7 +215,7 @@ paso("Pedido recibido", 800)
         console.log(resultado)
     }); */
 
-/*  Ejercicio 9 
+/*  Ejercicio 9
 Crea una funcion `obtenerIdUsuario` que resuelva con el numero 42 despues
 de 500ms. Encadena un `.then()` que, con ese id, retorne una NUEVA promesa
 que resuelva con el objeto `{ id: 42, nombre: "Ana", rol: "QA" }` despues
@@ -209,7 +225,7 @@ de otros 500ms. Encadena otro `.then()` que imprima el objeto completo. */
     return new Promise ((resolve) => {
         setTimeout (() => {
             resolve(42)
-        }, 500)        
+        }, 500)
     });
 }
 
@@ -218,39 +234,39 @@ obtenerIdUsuario()
         console.log("id usuario:", id);
         return new Promise ((resolve) => {
             setTimeout(() => {
-                resolve ({id: id, nombre: "Ana", rol: "QA"})                
-            }, 500);        
+                resolve ({id: id, nombre: "Ana", rol: "QA"})
+            }, 500);
         });
     })
     .then((usuario) => {
         console.log("Objeto completo", usuario)
     }); */
 
-/* Ejercicio 10 
+/* Ejercicio 10
 Crea una cadena de cuatro `.then()` donde el tercero lanza un error con
 `throw new Error("Fallo en el paso 3")`. Agrega un `.catch()` al final
 que capture el error e imprima `"Cadena interrumpida: [mensaje del error]"`.
 Verifica que el cuarto `.then()` NO se ejecute. */
 
- /* Promise.resolve("Inicio") // Crea una promesa ya resuelta con el valor Inicio
-    .then((resultado) => {
-        console.log("Paso 1: ", resultado);
-        return "Paso 2: Completado"
-    })
-    .then((resultado) => {
-        console.log(resultado);
-        return "Paso 3: En proceso"
-    })
-    .then((resultado) => {
-        console.log(resultado)
-        throw new Error ("Fallo en el paso 3")
-    })
-    .then((resultado) => {
-        console.log("Paso 4: ", resultado)
-    })
-    .catch((error) => {
-        console.log("Cadena interrumpieda: ", error.message)
-    }); */
+/* Promise.resolve("Inicio") // Crea una promesa ya resuelta con el valor Inicio
+   .then((resultado) => {
+       console.log("Paso 1: ", resultado);
+       return "Paso 2: Completado"
+   })
+   .then((resultado) => {
+       console.log(resultado);
+       return "Paso 3: En proceso"
+   })
+   .then((resultado) => {
+       console.log(resultado)
+       throw new Error ("Fallo en el paso 3")
+   })
+   .then((resultado) => {
+       console.log("Paso 4: ", resultado)
+   })
+   .catch((error) => {
+       console.log("Cadena interrumpieda: ", error.message)
+   }); */
 
 /* Ejercicio 11 - Promise.all basico
 Crea tres promesas que resuelvan en tiempos diferentes (300ms, 600ms y
@@ -333,7 +349,7 @@ y el valor o razon correspondiente. */
 const segundaPromesa = new Promise((_, reject) => {
     setTimeout(() => {
         reject("Segunda promesa Rechazada")
-    }, 200);    
+    }, 200);
 });
 
 const tercerPromesa = new Promise((resolve) => {
@@ -411,15 +427,15 @@ todas fallen. En un comentario explica la diferencia entre `Promise.any`
 y `Promise.race`*/
 
 /* const promesaUno = new Promise((_, reject) => {
-    reject("Promesa uno rechazada")    
+    reject("Promesa uno rechazada")
 });
 
 const promesaDos = new Promise((_, reject) => {
     reject("Promesa dos rechazada")
 });
 
-const promesaTres = new Promise((resolve) => {    
-        resolve("Promesa tres, Datos encontrados")    
+const promesaTres = new Promise((resolve) => {
+        resolve("Promesa tres, Datos encontrados")
 });
 
 
@@ -580,11 +596,10 @@ con `.then()` y `.catch()`:
    con `"Acceso concedido"` si el permiso existe, o rechaza con
    `"Permiso denegado"` si no
 4. Imprime el resultado final o el error con un mensaje de contexto
-
 Prueba el flujo con `"escribir"` (debe pasar) y con `"eliminar"`
 (debe fallar en el paso 3). */
 
-const autenticar = () => new Promise((resolve) => {
+/* const autenticar = () => new Promise((resolve) => {
     setTimeout(() => {
         resolve("token123");
     }, 300);
@@ -620,5 +635,5 @@ autenticar()
     })
     .catch((error) => {
         console.error("Error en el flujo de pruebas:", error);
-    }); 
+    }); */
 
