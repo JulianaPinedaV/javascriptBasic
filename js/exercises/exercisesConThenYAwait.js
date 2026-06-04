@@ -618,7 +618,7 @@ verificarEmails(emails); */
 * Si el stock es menor a 5, genera automáticamente una orden de compra duplicando el stock actual.
 * Devuelve el inventario final corregido. */
 
-const productos = [
+/* const productos = [
     { nom: "A", stock: 5 },
     { nom: "B", stock: 12 },
     { nom: "C", stock: 2 }
@@ -645,4 +645,156 @@ async function procesarInventario(productos) {
     }
 }
 
-procesarInventario(productos);
+procesarInventario(productos); */
+
+/* Ejercicio 16. Crea una función que simule procesar una tarjeta de crédito. La pasarela tiene un 50% de probabilidad de lanzar un error `"Error de conexión 503"`.
+* Escribe el código usando `try/catch` para capturar el error. Si falla, el bloque `catch` debe desviar el flujo y ejecutar un método de pago alternativo (pago con saldo de puntos interno) para que la experiencia del usuario no se rompa. */
+
+/* function procesarTarjeta() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const fallo = Math.random() > 0.5;
+            if (fallo) {
+                reject("Error de conexión 503")
+            } else {
+                resolve("Pago con tarjeta exitoso")
+            }
+        }, 1000)
+    })
+};
+
+function pagarConPuntos() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Pago exitoso con puntos")
+        }, 1000);
+    })
+};
+
+async function pagoUsuarioAsync() {
+    try {
+        const pagoUsario = await procesarTarjeta()
+        console.log(pagoUsario)
+    } catch (error) {
+        console.error("Error en pasarela de pago", error)
+        const pagoAlternativo = await pagarConPuntos();
+        console.log(pagoAlternativo)
+    }
+};
+
+pagoUsuarioAsync(); */
+
+/* Ejercicio 17. Crea una función asíncrona que ejecute una tarea matemática que falla la mayoría de las veces.
+* Diseña un bucle `for` o `while` dentro de tu función `async`. 
+* Si la tarea falla, el programa debe esperar y volver a intentar la tarea hasta un **máximo de 3 veces**.
+* Si al tercer intento sigue fallando, lanza un error definitivo: `"Sistema totalmente caído"`. */
+
+/* function tareaMatematica() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const fallo = Math.random() > 0.2
+            if (fallo) {
+                reject("Tarea fallida")
+            } else {
+                resolve("Tarea completada")
+            }
+        }, 1000)
+    });
+}
+
+async function ejecutar() {
+    for (let i = 0; i < 3; i++) {
+        try {
+            const intentos = await tareaMatematica();
+            console.log(intentos)
+        } catch (error) {
+            console.error("Error en intento",i + 1,":",error)
+        }
+    }
+}
+
+ejecutar(); */
+
+/* Ejercicio 18. Tienes tres tareas de auditoría corriendo en paralelo: `auditarFinanzas()` (éxito), `auditarRecursosHumanos()` (falla con error grave) y `auditarSeguridad()` (éxito).
+* Si usas `Promise.all`, el error de RRHH romperá todo el proceso.
+* Resuélvelo usando la herramienta correcta para que puedas imprimir en consola cuáles departamentos pasaron la auditoría con éxito y cuál falló de forma aislada, detallando el porqué. */
+
+/* function auditarFinanzas() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("exito")
+        }, 1000)
+    })
+}
+
+function auditarRecursosHumanos() {
+    return new Promise((_, reject) => {
+        setTimeout(() => {
+            reject("Falla con error grave")
+        }, 1000)
+    })
+}
+
+function auditarSeguridad() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("exito")
+        }, 1000)
+    })
+}
+
+async function resultadoAuditorias() {
+    try {
+        const resultado = await Promise.allSettled([auditarFinanzas(), auditarRecursosHumanos(), auditarSeguridad()]);
+
+        resultado.forEach((auditoria) => {
+            if (auditoria.status === "fulfilled") {
+                console.log("Passed:", auditoria.value);
+            } else {
+                console.error("Failed:", auditoria.reason);
+            }
+        });
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+resultadoAuditorias(); */
+
+/* Ejercicio 19. Crea una función encargada de procesar una imagen muy pesada (simula que tarda 3.5 segundos en resolver).
+* Crea un mecanismo de control de tiempo en paralelo (`setTimeout` en otra promesa). 
+* Si la función de la imagen no ha respondido en **2 segundos**, detén la espera inmediatamente y lanza un error que diga: `"Tiempo de espera agotado: Operación cancelada"`. */
+
+/* function procesarImagen() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Imagen procesada exitosamente")
+        }, 1500);
+    })
+}
+
+function timeOut() {
+    return new Promise((_, reject) => {
+        setTimeout(() => {
+            reject("Tiempo de espera agotado: Operación cancelada")
+        }, 2000);
+    })
+}
+
+async function imagenProcesada() {
+    try {
+        const imagen = await Promise.race([procesarImagen(), timeOut()]);
+        console.log(imagen);
+    } catch (error) {
+        console.log("Error", error)
+    } 
+}
+
+imagenProcesada(); */
+
+/* Ejercicio 20. Diseña un flujo complejo de un checkout:
+* **Paso 1:** Aplica un descuento en base a un código de cupón (1s).
+* **Paso 2:** Cobra el dinero restando el descuento (1s).
+* **Paso 3:** Actualiza la base de datos (1s).
+* **Lógica especial:** Si el Paso 3 falla (simula un error aleatorio), el sistema debe capturar el error en el `catch` y ejecutar una función de reversión (*rollback*) que devuelva el dinero cobrado en el Paso 2 al usuario, imprimiendo un log de alerta. */
